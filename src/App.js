@@ -3,12 +3,14 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "./pages/homepage/HomePage";
 import ShopPage from "./pages/shop/Shop";
 import Header from "./components/header/Header";
+import SignInup from "./pages/sign-in-sign-up/SignInup";
 
 function App() {
   return (
     <div>
       <Header />
       <Switch>
+        <Route exact path="/signin" component={SignInup} />
         <Route exact path="/shop" component={ShopPage} />
         <Route exact path="/" component={HomePage} />
       </Switch>
