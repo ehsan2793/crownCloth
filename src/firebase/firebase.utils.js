@@ -5,6 +5,10 @@ import 'firebase/compat/firestore';
 
 
 
+
+
+
+
 const config = {
     apiKey: "AIzaSyB00iaLu2PBEHnYe27GvAUMVf18JhkGUuo",
     authDomain: "crown-2d51b.firebaseapp.com",
@@ -15,9 +19,13 @@ const config = {
     measurementId: "G-FNLF3LG5LS"
 };
 
+
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
-    const userReft = firebase.doc(`users/${userAuth.uid}`);
+
+    const userReft = firestore.doc(`users/${userAuth.uid}`);
+
     const snapShot = await userReft.get();
     if (!snapShot.exists) {
         const { displayName, email } = userAuth;
@@ -39,6 +47,13 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
     return userReft;
 }
+
+
+
+
+
+
+
 
 firebase.initializeApp(config);
 export const auth = firebase.auth();
