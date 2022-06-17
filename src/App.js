@@ -5,7 +5,7 @@ import HomePage from "./pages/homepage/HomePage";
 import ShopPage from "./pages/shop/Shop";
 import Header from "./components/header/Header";
 import SignInup from "./pages/sign-in-sign-up/SignInup";
-import { auth } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 class App extends Component {
   state = {
@@ -17,8 +17,9 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
       this.setState({ currentUser: user });
+      createUserProfileDocument(user);
 
       console.log(user);
     });
