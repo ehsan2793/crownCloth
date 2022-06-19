@@ -1,0 +1,4 @@
+export const UserActionTypes = {
+    SET_CURRENT_USER: "SET_CURRENT_USER",
+    EMAIL_SIGN_IN_START: "EMAIL_SIGN_IN_START",
+}
